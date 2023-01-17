@@ -1,5 +1,6 @@
 package de.volkswagen.UnserFilmabend.service;
 
+import de.volkswagen.UnserFilmabend.dto.GenreDTO;
 import de.volkswagen.UnserFilmabend.model.Genre;
 import de.volkswagen.UnserFilmabend.repository.GenreRepository;
 import de.volkswagen.UnserFilmabend.repository.MovieRepository;
@@ -24,10 +25,10 @@ public class MovieService {
     }
 
     public  List<Genre> getGenres() {
-
+       // "https://api.themoviedb.org/3/genre/movie/list?{api_key}={key_value}", "api-key","e173ba193d1b0380036cf7f73f4c9891"
         String uri = "https://api.themoviedb.org/3/genre/movie/list?api_key=e173ba193d1b0380036cf7f73f4c9891&language=en-US";
         RestTemplate restTemplate = new RestTemplate();
-        List<Genre> result = Arrays.asList(restTemplate.getForObject(uri, Genre[].class));
+        List<Genre> result = Arrays.asList(restTemplate.getForObject(uri, GenreDTO.class).getGenres());
         genreRepository.saveAll(result);
         return result;
 
