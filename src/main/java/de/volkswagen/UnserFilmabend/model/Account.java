@@ -13,7 +13,9 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(unique = true)
     private String name;
     @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
     private Set<Movie> favorites;
+    private String passwordHash;
 }
