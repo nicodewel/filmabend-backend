@@ -12,6 +12,12 @@ import java.util.List;
 @RestController
 public class MovieController {
 
+    public MovieService movieService;
+
+    public MovieController(MovieService movieService) {
+        this.movieService = movieService;
+    }
+
     @GetMapping("movies")
     public ResponseEntity<List<Movie>> getMoviesFromApi(){
         return ResponseEntity.ok(new ArrayList<Movie>());
