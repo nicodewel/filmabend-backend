@@ -7,5 +7,5 @@ import lombok.Data;
 public class LoginData {
 
     private String name;
-    private String password;
+    private String passwordHash;
 }

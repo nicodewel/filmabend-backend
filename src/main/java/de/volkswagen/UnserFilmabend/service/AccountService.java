@@ -21,7 +21,7 @@ public class AccountService {
         if (!dbAccount.isPresent()) {
             throw new RuntimeException();
         }
-        if (dbAccount.get().getPasswordHash().equals(loginData.getPassword())) {
+        if (dbAccount.get().getPasswordHash().equals(loginData.getPasswordHash())) {
             return dbAccount.get();
         };
         throw new RuntimeException();
