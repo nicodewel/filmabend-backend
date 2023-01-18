@@ -16,6 +16,9 @@ public class Account {
     @Column(unique = true)
     private String name;
     @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
-    private Set<Movie> favorites;
+    private Set<Movie> favoriteMovies;
+    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
+    private Set<Genre> favoriteGenres;
     private String passwordHash;
+    private String city;
 }
