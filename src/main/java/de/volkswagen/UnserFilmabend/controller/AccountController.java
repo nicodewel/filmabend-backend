@@ -2,6 +2,7 @@ package de.volkswagen.UnserFilmabend.controller;
 
 import de.volkswagen.UnserFilmabend.dto.LoginData;
 import de.volkswagen.UnserFilmabend.model.Account;
+import de.volkswagen.UnserFilmabend.model.Genre;
 import de.volkswagen.UnserFilmabend.service.AccountService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,4 +28,14 @@ public class AccountController {
         return ResponseEntity.ok(account);
     }
 
+    @PostMapping("/accounts/{accountid}/favGenres")
+    public ResponseEntity<Account> addFavGenre(@PathVariable long id, @RequestBody Genre genre){
+        Account acc;
+        try{
+            acc = accountService.addFavGenre(id, genre);
+        }catch (RuntimeException e){
+            return ResponseEntity.status(418).build();
+        }
+        return ResponseEntity.ok(acc);
+    }
 }
