@@ -28,11 +28,11 @@ public class AccountController {
         return ResponseEntity.ok(account);
     }
 
-    @PostMapping("/accounts/{accountid}/favGenres")
-    public ResponseEntity<Account> addFavGenre(@PathVariable long id, @RequestBody Genre genre){
+    @PostMapping("/accounts/{accountId}/favGenres")
+    public ResponseEntity<Account> addFavGenre(@PathVariable long accountId, @RequestBody Genre genre){
         Account acc;
         try{
-            acc = accountService.addFavGenre(id, genre);
+            acc = accountService.addFavGenre(accountId, genre);
         }catch (RuntimeException e){
             return ResponseEntity.status(418).build();
         }
