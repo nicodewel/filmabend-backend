@@ -31,6 +31,5 @@ public class MovieService {
         List<Genre> result = Arrays.asList(restTemplate.getForObject(uri, GenreDTO.class).getGenres());
         genreRepository.saveAll(result);
         return result;
-
     }
 }
