@@ -13,6 +13,7 @@ public class EventPlan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
+    @ManyToOne
     private Account host;
     @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
     private Set<Movie> selectedMovies;
