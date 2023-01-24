@@ -3,6 +3,7 @@ package de.volkswagen.UnserFilmabend.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.Instant;
 import java.util.Set;
 
 @Data
@@ -13,6 +14,7 @@ public class EventPlan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
+    private Instant date;
     @ManyToOne
     private Account host;
     @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
