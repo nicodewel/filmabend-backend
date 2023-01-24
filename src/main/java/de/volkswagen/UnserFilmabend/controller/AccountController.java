@@ -7,6 +7,7 @@ import de.volkswagen.UnserFilmabend.service.AccountService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -41,7 +42,7 @@ public class AccountController {
     }
 
     @GetMapping("/usernames")
-    public ResponseEntity<Set<String>> getAllUsernames(){
+    public ResponseEntity<List<String>> getAllUsernames(){
         return ResponseEntity.ok(accountService.getAllUsernames());
     }
 }

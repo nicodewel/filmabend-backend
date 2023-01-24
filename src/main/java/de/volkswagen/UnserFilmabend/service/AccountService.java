@@ -44,8 +44,8 @@ public class AccountService {
 
     }
 
-    public Set<String> getAllUsernames() {
-        Set<String> usernames = new HashSet<>();
+    public List<String> getAllUsernames() {
+        List<String> usernames = new ArrayList<>();
         accountRepository.findAll().forEach(account -> usernames.add(account.getName()));
         return usernames;
     }
