@@ -4,9 +4,10 @@ import de.volkswagen.UnserFilmabend.dto.LoginData;
 import de.volkswagen.UnserFilmabend.model.Account;
 import de.volkswagen.UnserFilmabend.model.Genre;
 import de.volkswagen.UnserFilmabend.service.AccountService;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Set;
 
 @RestController
 public class AccountController {
@@ -37,5 +38,10 @@ public class AccountController {
             return ResponseEntity.status(418).build();
         }
         return ResponseEntity.ok(acc);
+    }
+
+    @GetMapping("/usernames")
+    public ResponseEntity<Set<String>> getAllUsernames(){
+        return ResponseEntity.ok(accountService.getAllUsernames());
     }
 }

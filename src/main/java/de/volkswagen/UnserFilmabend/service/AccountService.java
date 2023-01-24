@@ -6,8 +6,7 @@ import de.volkswagen.UnserFilmabend.model.Genre;
 import de.volkswagen.UnserFilmabend.repository.AccountRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class AccountService {
@@ -25,15 +24,19 @@ public class AccountService {
         }
         if (dbAccount.get().getPasswordHash().equals(loginData.getPasswordHash())) {
             return dbAccount.get();
-        };
+        }
+        ;
         throw new RuntimeException();
-    };
+    }
 
-    public Account addFavGenre (long id, Genre genre) {
+    ;
+
+    public Account addFavGenre(long id, Genre genre) {
         Optional<Account> accToExtendOptional = accountRepository.findById(id);
-        if(!accToExtendOptional.isPresent()){
+        if (!accToExtendOptional.isPresent()) {
             throw new RuntimeException();
-        }else{
+        }
+        else {
             Account accToExtend = accToExtendOptional.get();
             accToExtend.getFavoriteGenres().add(genre);
             return accountRepository.save(accToExtend);
@@ -41,4 +44,9 @@ public class AccountService {
 
     }
 
+    public Set<String> getAllUsernames() {
+        Set<String> usernames = new HashSet<>();
+        accountRepository.findAll().forEach(account -> usernames.add(account.getName()));
+        return usernames;̨
+    }
 }
